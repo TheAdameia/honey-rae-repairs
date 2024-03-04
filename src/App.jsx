@@ -21,7 +21,11 @@ export const App = () => {
       page, which in this case is the home page of the site. If I were to put "Welcome" between NavBar and Outlet, it would render
       on every page.*/}
       <Route path="tickets" element={<TicketList />} />
-      <Route path="customers" element={<CustomerList />} />
+      <Route path="customers">
+        <Route element={<CustomerList />} /> {/* if the element was left in the parent route, it would also render on every subpage
+        similar to the Welcome issue that was averted earlier. */}
+        <Route path=":customerId" element={<>Customer Details</>} />
+      </Route>
       <Route path="staff" element={<StaffList />} />
     </Route>
   </Routes>
