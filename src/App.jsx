@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom"
 import { NavBar } from "./components/nav/NavBar.jsx"
 import { Outlet } from "react-router-dom"
 import { Welcome } from "./welcome/Welcome.jsx"
+import { CustomerDetails } from "./components/customers/CustomerDetails.jsx"
+import { StaffDetails } from "./components/staff/StaffDetails.jsx"
 
 export const App = () => {
   return (<Routes>
@@ -22,11 +24,14 @@ export const App = () => {
       on every page.*/}
       <Route path="tickets" element={<TicketList />} />
       <Route path="customers">
-        <Route element={<CustomerList />} /> {/* if the element was left in the parent route, it would also render on every subpage
+        <Route index element={<CustomerList />} /> {/* if the element was left in the parent route, it would also render on every subpage
         similar to the Welcome issue that was averted earlier. */}
-        <Route path=":customerId" element={<>Customer Details</>} />
+        <Route path=":customerId" element={<CustomerDetails />} />
       </Route>
-      <Route path="staff" element={<StaffList />} />
+      <Route path="staff">
+        <Route index element={<StaffList />} />
+        <Route path=":staffId" element={<StaffDetails />} />
+      </Route>
     </Route>
   </Routes>
   )

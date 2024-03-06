@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { getStaffUsers } from "../../services/userService"
 import { User } from "../../users/User"
+import "./Staff.css"
+import { Link } from "react-router-dom"
 
 
 export const StaffList = () => {
@@ -13,9 +15,13 @@ export const StaffList = () => {
         })
     }, [])
 
-    return <div className="staff">
+    return <div className="employee">
         {staff.map((staffObject) => {
-            return <User user={staffObject} key={staffObject.id}/>
+            return(
+                <Link to={`/staff/${staffObject.id}`} key={staffObject.id}>
+                    <User user={staffObject} key={staffObject.id}/>
+                </Link> 
+            ) 
         })}
     </div>
 }
