@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { getStaffUsers } from "../../services/userService"
+import { getStaffUsers } from "../../services/userService.jsx"
 import { User } from "../../users/User"
 import "./Staff.css"
 import { Link } from "react-router-dom"
